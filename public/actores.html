@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Actores</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsrender/1.0.12/jsrender.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-serialize-object/2.5.0/jquery.serialize-object.min.js"
+            integrity="sha512-Gn0tSSjkIGAkaZQWjx3Ctl/0dVJuTmjW/f9QyB302kFjU4uTNP4HtA32U2qXs/TRlEsK5CoEqMEMs7LnzLOBsA=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/navigo/8.11.1/navigo.min.js"
+            referrerpolicy="no-referrer"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/picnic">
+    <link rel="stylesheet" href="stylesheets/pelicules.css">
+
+</head>
+<body>
+<div class="barra">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html"><img
+                    src="https://img2.freepng.es/20180323/ape/kisspng-art-film-logo-cinema-clip-art-movie-logo-cliparts-5ab587fb1000c4.1651552415218462670656.jpg"
+                    alt="Logo"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="peliculas.html">Peliculas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="actores.html">Actores</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contacto.html">Contacto</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="api.html">API</a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<div class="container">
+    <div class="row">
+        <h1>Actores</h1>
+        <!-- MODIFY ACTOR -->
+        <script id="modify_actor_template" type="text/x-handlebars-template">
+            <h1>Modificar actor con id: {{:actor._id}}</h1>
+            <form id="modifyActorForm">
+                <label for="nombre">Nombre actor</label>
+                <input type="text" id="nombre" name="Nombre" value="{{:actor.Nombre}}">
+                <br>
+                <label for="edad">Edad</label>
+                <input type="text" id="edad" name="Edad" value="{{:actor.Edad}}">
+                <br>
+                <label for="altura">Altura</label>
+                <input type="text" id="altura" name="Altura" value="{{:actor.Altura}}">
+                <br>
+                <label for="nacionalidad">Nacionalidad</label>
+                <input type="text" id="nacionalidad" name="Nacionalidad" value="{{:actor.Nacionalidad}}">
+                <br>
+                <label for="id_pelicula">Pelicula</label>
+            <select id="id_pelicula" name="id_pelicula">
+            {{for peliculas.peliculas ~actor=actor}}
+            {{if ~actor.id_pelicula==_id}}
+                <option value="{{:_id}}" selected>{{:Pelicula}}</option>
+            {{else}}
+                <option value="{{:_id}}">{{:Pelicula}}</option>
+            {{/if}}
+            {{/for}}
+            </select>
+                <label for="foto">Foto</label>
+                <input type="text" id="foto" name="Foto" value="{{:actor.Foto}}">
+                <input type="submit" class="add_actor_submit" value="Modificar" data-id="{{:actor._id}}">
+            </form>
+        </script>
+
+        <!-- SHOW ACTOR -->
+        <script id="show_actores_template" type="text/x-handlebars-template">
+            <a href="#/add" class="btn btn-primary">Add actor</a>
+            <br>
+            <br>
+            <table class="center">
+                <thead>
+                <tr>
+                    <div class="col-sm-3">
+                        <th>Nombre</th>
+                        <div class="col-sm-3">
+                            <th>Edad</th>
+                        </div>
+                        <div class="col-sm-3">
+                            <th>Altura</th>
+                        </div>
+                        <div class="col-sm-3">
+                            <th>Nacionalidad</th>
+                        </div>
+                        <div class="col-sm-3">
+                            <th>Foto</th>
+                        </div>
+                        <div class="col-sm-2">
+                            <th>Actions</th>
+                        </div>
+                </tr>
+                </thead>
+            <tbody>
+            {{for actores}}
+            <tr>
+                <td>{{:Nombre}}</td>
+                <td>{{:Edad}}</td>
+                <td>{{:Altura}}</td>
+                <td>{{:Nacionalidad}}</td>
+                <td><img src= {{:Foto}}></td>
+                <td>
+                    <a href="#/modify?id={{:id}}" class="btn btn-warning"> Modify </a>
+                    <a href="#/delete?id={{:id}}" class="btn btn-danger"> Delete </a>
+                </td>
+            </tr>
+            {{/for}}
+            </tbody>
+            </table>
+        </script>
+
+        <!-- ADD ACTOR -->
+        <script id="add_actor_template" type="text/x-handlebars-template">
+            <h1>Insertar Actor</h1>
+            <form id="add_actor_form">
+                <label for="nombre">Nombre actor</label>
+                <input type="text" id="nombre" name="Nombre">
+                <br>
+                <label for="edad">Edad</label>
+                <input type="text" id="edad" name="Edad">
+                <br>
+                <label for="altura">Altura</label>
+                <input type="text" id="altura" name="Altura">
+                <br>
+                <label for="nacionalidad">Nacionalidad</label>
+                <input type="text" id="nacionalidad" name="Nacionalidad">
+                <br>
+                <label for="pelicula">Pelicula</label>
+                <select id="pelicula" name="id_pelicula"
+            {{for peliculas}}
+                <option value="{{:_id}}">{{:Pelicula}}</option>
+            {{/for}}
+                </select>
+                <label for="foto">Foto</label>
+                <input type="text" id="foto" name="Foto">
+                <input type="submit" id="add_actor_form_submit">
+            </form>
+        </script>
+
+        <div id="app"></div>
+    </div>
+</div>
+
+<script>
+    const router = new Navigo('/', {hash: true});
+    router
+        .on('/', showActores)
+        .on('/actores.html', showActores)
+        .on('/add', showAddActorForm)
+        .on('/modify', showModifyActor)
+        .on('/delete', deleteActor)
+        .resolve()
+
+
+    function showAddActorForm() {
+        $.getJSON('/api/peliculas/', function (actores) {
+            let html = $("#add_actor_template").render(actores);
+            $("#app").html(html);
+
+            $("#add_actor_form_submit").on("click", getAddActorForm);
+        });
+    }
+
+    function getAddActorForm(event) {
+        event.preventDefault();
+        let form = $("#add_actor_form");
+        let parametros = form.serializeObject();
+
+        $.post('/api/actores/', parametros, function (result) {
+            router.navigate('/')
+        }).catch(function (error) {
+            console.log(error)
+        })
+    }
+
+    function deleteActor(params) {
+        let id = params.params.id;
+
+        $.ajax({
+            url: '/api/actores/' + id,
+            type: 'DELETE'
+        })
+            .then(function (result) {
+                router.navigate('/')
+            })
+            .catch(function (error) {
+                console.log(error)
+            })
+    }
+
+    function getModifyActorFormParams(event) {
+        event.preventDefault();
+        let form = $('#modifyActorForm')
+        let parameters = form.serializeObject();
+        console.log(parameters)
+        let id = $(this).data("id");
+
+        $.post('/api/actores/' + id, parameters, function (data) {
+            router.navigate('/')
+        }).catch(function (error) {
+            console.log(error)
+        })
+    }
+
+    function showModifyActor(params) {
+
+        let id = params.params.id;
+
+        $.getJSON('api/actores/' + id, function (dataActor) {
+            $.getJSON('api/actores/' + id, function (dataActores) {
+                $.getJSON('api/peliculas/', function (dataPeliculas) {
+                    let actores = dataActores
+                    let data = {
+                        'actor': actores,
+                        'peliculas': dataPeliculas
+                    }
+                    console.log(data)
+                    let html = $("#modify_actor_template").render(data);
+                    $("#app").html(html)
+                    $('.add_actor_submit').on('click', getModifyActorFormParams)
+                });
+            });
+        });
+    }
+
+    /*
+            function showActores() {
+                $.getJSON('/api/actores/', function (data) {
+                    let html = $("#show_actores_template").render(data);
+                    $("#app").html(html)
+                    console.log(html)
+
+
+                });
+            }
+
+     */
+
+    async function showActores() {
+        try {
+            const data = await $.getJSON('/api/actores/')
+            let allActoresToBeRendered = {'actores': []};
+
+            for (const actor of data.actores) {
+                let singlePeliculaURL = '/api/peliculas/' + actor.id_pelicula;
+                console.log('singlePeliculaURL', singlePeliculaURL)
+                try {
+                    const peliculasData = await $.getJSON(singlePeliculaURL);
+                    let actorToBeRendered = {
+                        id: actor._id,
+                        Altura: actor.Altura,
+                        Edad: actor.Edad,
+                        Foto: actor.Foto,
+                        pelicula: peliculasData.Pelicula,
+                        Nacionalidad: actor.Nacionalidad,
+                        Nombre: actor.Nombre,
+                    };
+                    allActoresToBeRendered.actores.push(actorToBeRendered)
+                } catch (error) {
+                    console.log(error)
+                }
+            }
+            let html = $("#show_actores_template").render(allActoresToBeRendered);
+            $("#app").html(html);
+        } catch (error) {
+            console.log(error)
+        }
+        $(document).ready(function () {
+            //showActores()
+            router.navigate('/')
+        });
+    }
+
+</script>
+</body>
+</html>

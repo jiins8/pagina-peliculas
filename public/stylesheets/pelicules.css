@@ -1,0 +1,22 @@
+img {
+    width: 150px;
+    height: 200px;
+
+}
+.center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+td, th{
+    text-align: center;
+    width: 1px;
+}
+table{
+    width: 1500px;
+    border: black;
+}
+.navbar-brand img {
+    width: 50px; /* Cambia el valor según el tamaño deseado */
+    height: 50px; /* Mantiene la proporción de la imagen */
+}

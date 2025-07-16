@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>API</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-serialize-object/2.5.0/jquery.serialize-object.min.js"
+            integrity="sha512-Gn0tSSjkIGAkaZQWjx3Ctl/0dVJuTmjW/f9QyB302kFjU4uTNP4HtA32U2qXs/TRlEsK5CoEqMEMs7LnzLOBsA=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/picnic">
+    <link rel="stylesheet" href="stylesheets/pelicules.css">
+<script>
+    // Obtener el enlace de la API
+    const apiLink = document.getElementById('api-link');
+
+    // Escuchar cuando se hace clic en el enlace
+    apiLink.addEventListener('click', function(event) {
+        event.preventDefault(); // prevenir el comportamiento predeterminado de hacer clic en un enlace
+
+        // Obtener el ID ingresado por el usuario
+        const id = prompt('Ingresa el ID de la película:');
+
+        // Construir la nueva URL con el ID
+        const newUrl = `http://localhost:3000/api/peliculas/${id}`;
+
+        // Actualizar el enlace de la API con la nueva URL
+        apiLink.href = newUrl;
+
+        // Abrir la nueva URL en una nueva pestaña
+        window.open(newUrl, '_blank');
+    });
+
+
+</script>
+
+
+</head>
+<body>
+<div class="barra">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html"><img
+                    src="https://img2.freepng.es/20180323/ape/kisspng-art-film-logo-cinema-clip-art-movie-logo-cliparts-5ab587fb1000c4.1651552415218462670656.jpg"
+                    alt="Logo"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="peliculas.html">Peliculas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="actores.html">Actores</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contacto.html">Contacto</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="api.html">API</a>
+                    </li>
+
+
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<div class="card">
+    <div class="card-header">
+    </div>
+    <div class="card-body">
+        <blockquote class="blockquote mb-0">
+            <p>Documentacion de la API</p>
+
+            <cite title="Source Title">/api/peliculas GET</cite>
+            <footer class="blockquote-footer"><a href="/api/peliculas" class="btn btn-primary">Devuelve una lista de
+                todas las películas en la base de datos</a>
+            </footer>
+
+            <cite title="Source Title">/api/actores GET</cite>
+            <footer class="blockquote-footer"><a href="/api/actores" class="btn btn-primary">Devuelve una lista de
+                todas los actores en la base de datos</a>
+            </footer>
+
+            <cite title="Source Title">/api/peliculas POST</cite>
+            <footer class="blockquote-footer">Agrega una nueva película a la base de datos</footer>
+
+            <cite title="Source Title">/api/actores POST</cite>
+            <footer class="blockquote-footer">Agrega un/a nuevo/a actor/iz a la base de datos</footer>
+
+            <cite title="Source Title">/api/peliculas/:id GET</cite>
+            <footer class="blockquote-footer">Devuelve una película específica según su ID</footer>
+
+            <cite title="Source Title">/api/actores/:id GET</cite>
+            <footer class="blockquote-footer">Devuelve un/a actor/iz específico/a según su ID</footer>
+
+            <cite title="Source Title">/api/peliculas/:id POST</cite>
+            <footer class="blockquote-footer">Actualiza una película específica según su ID</footer>
+
+            <cite title="Source Title">/api/actores/:id POST</cite>
+            <footer class="blockquote-footer">Actualiza un/a actor/iz específico/a según su ID</footer>
+
+            <cite title="Source Title">/api/peliculas/:id DELETE:</cite>
+            <footer class="blockquote-footer">Elimina una película específica según su ID</footer>
+
+            <cite title="Source Title">/api/actores/:id DELETE:</cite>
+            <footer class="blockquote-footer">Elimina un/a actor/iz específica según su ID</footer>
+        </blockquote>
+    </div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="211fc0dd-f534-4952-a8b1-b5f244b58168" name="M4">
+        <fileTransfer rootFolder="/dev/m4/mongoose" accessType="SFTP" host="192.168.56.101" port="22" sshConfigId="568dc542-5dc7-4db9-9584-b6971935b43f" sshConfig="jinshuo@192.168.56.101:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

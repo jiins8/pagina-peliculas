@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Peliculas</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsrender/1.0.12/jsrender.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-serialize-object/2.5.0/jquery.serialize-object.min.js"
+            integrity="sha512-Gn0tSSjkIGAkaZQWjx3Ctl/0dVJuTmjW/f9QyB302kFjU4uTNP4HtA32U2qXs/TRlEsK5CoEqMEMs7LnzLOBsA=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/navigo/8.11.1/navigo.min.js"
+            referrerpolicy="no-referrer"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/picnic">
+    <link rel="stylesheet" href="stylesheets/pelicules.css">
+
+</head>
+<body>
+<div class="barra">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html"><img
+                    src="https://img2.freepng.es/20180323/ape/kisspng-art-film-logo-cinema-clip-art-movie-logo-cliparts-5ab587fb1000c4.1651552415218462670656.jpg"
+                    alt="Logo"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="peliculas.html">Peliculas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="actores.html">Actores</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contacto.html">Contacto</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="api.html">API</a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <h1>Peliculas</h1>
+        <!-- MODIFY PELICULA -->
+        <script id="modify_pelicula_template" type="text/x-handlebars-template">
+            <h1>Modificar pelicula con id: {{:pelicula._id}}</h1>
+            <form id="modifyPeliculaForm">
+                <label for="nombre">Nombre pelicula</label>
+                <input type="text" id="nombre" name="Pelicula" value="{{:pelicula.Pelicula}}">
+                <br>
+                <label for="genero">Genero</label>
+                <input type="text" id="genero" name="Genero" value="{{:pelicula.Genero}}">
+                <br>
+                <label for="director">Director</label>
+                <input type="text" id="director" name="Director" value="{{:pelicula.Director}}">
+                <br>
+                <label for="fecha_estreno">Fecha Estreno</label>
+                <input type="text" id="fecha_estreno" name="Fecha_Estreno" value="{{:pelicula.Fecha_Estreno}}">
+                <br>
+                <label for="duracion">Duracion</label>
+                <input type="text" id="duracion" name="Duracion" value="{{:pelicula.Duracion}}">
+                <br>
+                <label for="id_actor">Actor</label>
+            <select id="id_actor" name="id_actor">
+            {{for actores.actores ~pelicula=pelicula}}
+            {{if ~pelicula.id_actor==_id}}
+                <option value="{{:_id}}" selected>{{:Nombre}}</option>
+            {{else}}
+                <option value="{{:_id}}">{{:Nombre}}</option>
+            {{/if}}
+            {{/for}}
+            </select>
+                <label for="portada">Portada</label>
+                <input type="text" id="portada" name="Portada" value="{{:pelicula.Portada}}">
+                <br>
+                <input type="submit" class="add_pelicula_submit" value="Modificar" data-id="{{:pelicula._id}}">
+            </form>
+        </script>
+        <!-- SHOW PELICULA -->
+        <script id="show_peliculas_template" type="text/x-handlebars-template">
+
+            <a href="#/add" class="btn btn-primary">Add pelicula</a>
+            <br>
+            <br>
+            <table class="center">
+                <thead>
+                <tr>
+
+                    <div class="col-sm-3">
+                        <th>Pelicula</th>
+                    </div>
+                    <div class="col-sm-3">
+                        <th>Genero</th>
+                    </div>
+                    <div class="col-sm-3">
+                        <th>Director</th>
+                    </div>
+                    <div class="col-sm-3">
+                        <th>Fecha Estreno</th>
+                    </div>
+                    <div class="col-sm-3">
+                        <th>Duracion</th>
+                    </div>
+                    <div class="col-sm-3">
+                        <th>Portada</th>
+                    </div>
+                    <div class="col-sm-2">
+                        <th>Acciones</th>
+                    </div>
+                </tr>
+                </thead>
+            <tbody>
+            {{for peliculas}}
+            <tr>
+                <td>{{:Pelicula}}</td>
+                <td>{{:Genero}}</td>
+                <td>{{:Director}}</td>
+                <td>{{:Fecha_Estreno}}</td>
+                <td>{{:Duracion}}</td>
+                </td>
+                <td><img src= {{:Portada}}></td>
+                <td>
+                    <a href="#/modify?id={{:id}}" class="btn btn-warning"> Modify </a>
+                    <a href="#/delete?id={{:id}}" class="btn btn-danger"> Delete </a>
+                </td>
+            </tr>
+            {{/for}}
+            </tbody>
+            </table>
+        </script>
+        <!-- ADD PELICULA -->
+        <script id="add_pelicula_template" type="text/x-handlebars-template">
+            <h1>Insertar Pelicula</h1>
+            <form id="add_pelicula_form">
+                <label for="nombre">Nombre pelicula</label>
+                <input type="text" id="nombre" name="Pelicula">
+                <br>
+                <label for="genero">Genero</label>
+                <input type="text" id="genero" name="Genero">
+                <br>
+                <label for="director">Director</label>
+                <input type="text" id="director" name="Director">
+                <br>
+                <label for="fecha_estreno">Fecha Estreno</label>
+                <input type="text" id="fecha_estreno" name="Fecha_Estreno">
+                <br>
+                <label for="duracion">Duracion</label>
+                <input type="text" id="duracion" name="Duracion">
+                <br>
+
+                <label for="actor">Actor</label>
+                <select id="actor" name="id_actor"
+            {{for actores}}
+                <option value="{{:_id}}">{{:Nombre}}</option>
+            {{/for}}
+                </select>
+
+                <label for="portada">Portada</label>
+                <input type="text" id="portada" name="Portada">
+                <input type="submit" id="add_pelicula_form_submit">
+            </form>
+        </script>
+
+    </div>
+
+    <div id="app"></div>
+</div>
+
+<script>
+
+    const router = new Navigo('/', {hash: true});
+    router
+        .on('/', showPeliculas)
+        .on('/peliculas.html', showPeliculas)
+        .on('/add', showAddPeliculaForm)
+        .on('/modify', showModifyPelicula)
+        .on('/delete', deletePelicula)
+        .resolve()
+
+
+    function showAddPeliculaForm() {
+        $.getJSON('/api/actores/', function (data) {
+            let html = $("#add_pelicula_template").render(data);
+            $("#app").html(html);
+
+            $("#add_pelicula_form_submit").on("click", getAddPeliculaForm);
+        });
+    }
+
+    function getAddPeliculaForm(event) {
+        event.preventDefault();
+        let form = $("#add_pelicula_form");
+        let parametros = form.serializeObject();
+
+        $.post('/api/peliculas/', parametros, function (result) {
+            router.navigate('/')
+        }).catch(function (error) {
+            console.log(error)
+        })
+    }
+
+    function deletePelicula(params) {
+        let id = params.params.id;
+        $.ajax({
+            url: '/api/peliculas/' + id,
+            type: 'DELETE'
+        })
+            .then(function (result) {
+                router.navigate('/')
+            })
+            .catch(function (error) {
+                console.log(error)
+            })
+    }
+
+    function getModifyPeliculaFormParams(event) {
+        event.preventDefault();
+        let form = $('#modifyPeliculaForm')
+        let parameters = form.serializeObject();
+        console.log(parameters)
+        let id = $(this).data("id");
+
+        $.post('/api/peliculas/' + id, parameters, function (data) {
+            router.navigate('/')
+        }).catch(function (error) {
+            console.log(error)
+        })
+    }
+
+    function showModifyPelicula(params) {
+
+        let id = params.params.id;
+
+        $.getJSON('api/peliculas/' + id, function (dataPelicula) {
+            $.getJSON('api/peliculas/' + id, function (dataPeliculas) {
+                $.getJSON('api/actores/', function (dataActores) {
+
+                    let peliculas = dataPeliculas
+                    let data = {
+                        'pelicula': peliculas,
+                        'actores': dataActores
+                    }
+                    console.log(data)
+                    let html = $("#modify_pelicula_template").render(data);
+                    $("#app").html(html)
+                    $('.add_pelicula_submit').on('click', getModifyPeliculaFormParams)
+                });
+            });
+        });
+    }
+
+    /*
+        function showPeliculas() {
+            $.getJSON('/api/peliculas/', function (data) {
+                let html = $("#show_peliculas_template").render(data);
+                $("#app").html(html)
+                console.log(html)
+            });
+        }
+
+     */
+
+    async function showPeliculas() {
+        try {
+            const data = await $.getJSON('/api/peliculas/')
+            let allPeliculasToBeRendered = {'peliculas': []};
+            for (const pelicula of data.peliculas) {
+                let singleActorURL = '/api/actores/' + pelicula.id_actor;
+                console.log('singleActorURL', singleActorURL)
+                try {
+                    const actoresData = await $.getJSON(singleActorURL);
+                    let peliculaToBeRendered = {
+                        id: pelicula._id,
+                        Pelicula: pelicula.Pelicula,
+                        Genero: pelicula.Genero,
+                        Actor: actoresData.Nombre,
+                        Director: pelicula.Director,
+                        Duracion: pelicula.Duracion,
+                        Fecha_Estreno: pelicula.Fecha_Estreno,
+                        Portada: pelicula.Portada
+                    };
+                    allPeliculasToBeRendered.peliculas.push(peliculaToBeRendered)
+                } catch (error) {
+                    console.log(error)
+                }
+            }
+            let html = $("#show_peliculas_template").render(allPeliculasToBeRendered);
+            $("#app").html(html);
+        } catch (error) {
+            console.log(error)
+        }
+
+    }
+
+        $(document).ready(function () {
+            router.navigate('/')
+        });
+
+</script>
+</body>
+</html>
