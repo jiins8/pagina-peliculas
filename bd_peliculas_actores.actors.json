@@ -1,0 +1,143 @@
+[{
+  "_id": {
+    "$oid": "644975b31e8c18ab3cb8ac0e"
+  },
+  "Altura": "1.80",
+  "Edad": "55",
+  "Foto": "https://static.tvtropes.org/pmwiki/pub/images/pac8.png",
+  "Nacionalidad": "Coreano",
+  "Nombre": "Kim Ki-taek",
+  "id_pelicula": {
+    "$oid": "64415a91a1602e89648dfbc1"
+  }
+},
+{
+  "_id": {
+    "$oid": "644976741e8c18ab3cb8ac10"
+  },
+  "Altura": "1.58",
+  "Edad": "47",
+  "Foto": "https://asianwiki.com/images/d/d4/Jang_Hye-Jin-1975-p1.jpg",
+  "Nacionalidad": "Coreana",
+  "Nombre": "Jang Hye-jin",
+  "id_pelicula": {
+    "$oid": "64415a91a1602e89648dfbc1"
+  }
+},
+{
+  "_id": {
+    "$oid": "644976aa1e8c18ab3cb8ac11"
+  },
+  "Altura": "1.81",
+  "Edad": "32",
+  "Foto": "https://asianwiki.com/images/6/68/Choi_Woo-Sik-1990-p1.jpg",
+  "Nacionalidad": "Coreano",
+  "Nombre": "Choi Woo-shik",
+  "id_pelicula": {
+    "$oid": "64415a91a1602e89648dfbc1"
+  }
+},
+{
+  "_id": {
+    "$oid": "644976e31e8c18ab3cb8ac12"
+  },
+  "Altura": "1.61",
+  "Edad": "31",
+  "Foto": "https://images.mubicdn.net/images/cast_member/496617/cache-412760-1550238266/image-w856.jpg?size=800x",
+  "Nacionalidad": "Coreana",
+  "Nombre": "Park So-dam",
+  "id_pelicula": {
+    "$oid": "64415a91a1602e89648dfbc1"
+  }
+},
+{
+  "_id": {
+    "$oid": "6449774a1e8c18ab3cb8ac13"
+  },
+  "Altura": "1.74",
+  "Edad": "68",
+  "Foto": "https://es.web.img3.acsta.net/pictures/16/01/07/16/44/109721.jpg",
+  "Nacionalidad": "Chino",
+  "Nombre": "Jackie Chan",
+  "id_pelicula": {
+    "$oid": "64496cf31e8c18ab3cb8ac03"
+  }
+},
+{
+  "_id": {
+    "$oid": "644977961e8c18ab3cb8ac14"
+  },
+  "Altura": "1.70",
+  "Edad": "24",
+  "Foto": "https://los40es00.epimg.net/los40/imagenes/2022/03/28/bigbang/1648454326_427942_1648454732_rrss_normal.jpg",
+  "Nacionalidad": "EEUU",
+  "Nombre": "Jaden Smith",
+  "id_pelicula": {
+    "$oid": "64496cf31e8c18ab3cb8ac03"
+  }
+},
+{
+  "_id": {
+    "$oid": "644977d91e8c18ab3cb8ac15"
+  },
+  "Altura": "1.88",
+  "Edad": "54",
+  "Foto": "https://es.web.img2.acsta.net/pictures/17/02/08/16/50/452749.jpg",
+  "Nacionalidad": "EEUU",
+  "Nombre": "Will Smith",
+  "id_pelicula": {
+    "$oid": "64496d791e8c18ab3cb8ac04"
+  }
+},
+{
+  "_id": {
+    "$oid": "644977fe1e8c18ab3cb8ac16"
+  },
+  "Altura": "1.79",
+  "Edad": "67",
+  "Foto": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/JK_Simmons_2009.jpg/220px-JK_Simmons_2009.jpg",
+  "Nacionalidad": "EEUU",
+  "Nombre": "J.K. Simmons",
+  "id_pelicula": {
+    "$oid": "64496dc51e8c18ab3cb8ac05"
+  }
+},
+{
+  "_id": {
+    "$oid": "644978241e8c18ab3cb8ac17"
+  },
+  "Altura": "1.84",
+  "Edad": "35",
+  "Foto": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Miles_Teller_by_Gage_Skidmore.jpg/230px-Miles_Teller_by_Gage_Skidmore.jpg",
+  "Nacionalidad": "EEUU",
+  "Nombre": "Miles Teller",
+  "id_pelicula": {
+    "$oid": "64496dc51e8c18ab3cb8ac05"
+  }
+},
+{
+  "_id": {
+    "$oid": "6449783e1e8c18ab3cb8ac18"
+  },
+  "Altura": "1.74",
+  "Edad": "57",
+  "Foto": "https://es.web.img3.acsta.net/pictures/22/03/21/14/03/3443055.jpg",
+  "Nacionalidad": "EEUU",
+  "Nombre": "Robert Downey Jr.",
+  "id_pelicula": {
+    "$oid": "64496e0a1e8c18ab3cb8ac06"
+  }
+},
+{
+  "_id": {
+    "$oid": "644978631e8c18ab3cb8ac19"
+  },
+  "Altura": "1.68",
+  "Edad": "33",
+  "Foto": "https://media.vogue.mx/photos/5f622891bf6d0f39b17f33ac/1:1/w_2025,h_2025,c_limit/la-actriz-elizabeth-olsen.jpg",
+  "Nacionalidad": "EEUU",
+  "Nombre": "Elizabeth Olsen",
+  "id_pelicula": {
+    "$oid": "64496e0a1e8c18ab3cb8ac06"
+  }
+}]

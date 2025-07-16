@@ -1,0 +1,70 @@
+[{
+  "_id": {
+    "$oid": "64496cf31e8c18ab3cb8ac03"
+  },
+  "Pelicula": "The Karate Kid (2010)",
+  "Genero": "Accion, Drama",
+  "Director": "Harald Zwart",
+  "Fecha_Estreno": "21/05/2019",
+  "Duracion": "2h 20min",
+  "Portada": "https://www.ecartelera.com/carteles/3700/3739/001_m.jpg",
+  "id_actor": {
+    "$oid": "644977961e8c18ab3cb8ac14"
+  }
+},
+{
+  "_id": {
+    "$oid": "64496d791e8c18ab3cb8ac04"
+  },
+  "Pelicula": "The Persuit Of Happyness",
+  "Genero": "Drama",
+  "Director": "Gabriele Muccino",
+  "Fecha_Estreno": "25/10/2007",
+  "Duracion": "1h 57min",
+  "Portada": "https://m.media-amazon.com/images/I/71-JsS3LidL._RI_.jpg",
+  "id_actor": {
+    "$oid": "644977d91e8c18ab3cb8ac15"
+  }
+},
+{
+  "_id": {
+    "$oid": "64496dc51e8c18ab3cb8ac05"
+  },
+  "Pelicula": "Whiplash",
+  "Genero": "Musica, Drama",
+  "Director": "Damien Chazelle",
+  "Fecha_Estreno": "10/10/2014",
+  "Duracion": "1h 47min",
+  "Portada": "https://multisononline.com/blog/wp-content/uploads/2021/02/16518531198_b750b1fe43_o.jpg",
+  "id_actor": {
+    "$oid": "644977fe1e8c18ab3cb8ac16"
+  }
+},
+{
+  "_id": {
+    "$oid": "64496e0a1e8c18ab3cb8ac06"
+  },
+  "Pelicula": "Avengers: Infinity War",
+  "Genero": "Accion, Ciencia Ficcion, Superheroes",
+  "Director": "Anthony Russo",
+  "Fecha_Estreno": "21/05/2019",
+  "Duracion": "2h 17min",
+  "Portada": "https://lumiere-a.akamaihd.net/v1/images/image_91864e3f.jpeg",
+  "id_actor": {
+    "$oid": "644978631e8c18ab3cb8ac19"
+  }
+},
+{
+  "_id": {
+    "$oid": "64415a91a1602e89648dfbc1"
+  },
+  "Pelicula": "Parasite",
+  "Genero": "Thriller",
+  "Director": "Boon Joon-ho",
+  "Duracion": "2h 17min",
+  "Fecha_Estreno": "21/05/2019",
+  "Portada": "https://celesteazul.files.wordpress.com/2020/04/poster.jpg",
+  "id_actor": {
+    "$oid": "644976741e8c18ab3cb8ac10"
+  }
+}]
